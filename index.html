@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Программа закончена. Твоя трансформация - нет.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Исправление для Google Sites */
+        html, body {
+            height: auto !important;
+            min-height: 1px !important;
+            overflow: visible !important; 
+        }
+
+        /* Анимация для плавного появления блоков */
+        .fade-in-item {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Интерактивное свечение карточек */
+        .interactive-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .interactive-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(45, 212, 191, 0.2);
+        }
+        
+        /* АНИМАЦИЯ МЕРЦАНИЯ ДЛЯ КНОПОК */
+        .shimmer-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(100deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+            transform: translateX(-150%);
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-150%);
+            }
+            50% {
+                transform: translateX(250%);
+            }
+            100% {
+                transform: translateX(250%);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <div id="main-container" class="container mx-auto max-w-4xl p-4 sm:p-8">
+        
+        <!-- HERO SECTION -->
+        <header class="text-center my-12 sm:my-20 fade-in-item">
+            <h1 class="text-3xl sm:text-5xl font-black text-white leading-tight tracking-tight">
+                ПРОГРАММА ЗАКОНЧЕНА. <br class="hidden sm:block"> ТВОЯ ТРАНСФОРМАЦИЯ - ТОЛЬКО НАЧИНАЕТСЯ.
+            </h1>
+            <p class="mt-4 text-xl text-gray-400 max-w-3xl mx-auto">Ты прошел 8 недель и доказал, что можешь. Теперь главный вопрос: как не слить результат и сделать его частью своей жизни навсегда?</p>
+            <a href="https://t.me/dgmukhin_adm?text=Хочу продолжить" target="_blank" class="inline-block mt-8 bg-teal-600 text-white font-bold py-4 px-10 rounded-lg hover:bg-teal-700 transition-colors shadow-lg text-lg shimmer-btn">
+                ВЫБРАТЬ СЛЕДУЮЩИЙ УРОВЕНЬ
+            </a>
+        </header>
+        
+        <!-- Секция 2: Достижения -->
+        <div class="bg-gray-800 rounded-2xl p-6 mb-12 fade-in-item" style="animation-delay: 100ms;">
+            <h3 class="font-bold text-2xl text-white mb-4">✅ ТЫ УЖЕ НЕ ТОТ, КЕМ БЫЛ 8 НЕДЕЛЬ НАЗАД</h3>
+            <p class="text-gray-300 mb-4">Давай без лишних слов. За эти 8 недель ты научился:</p>
+            <ul class="space-y-3">
+                <li class="flex items-start"><span class="text-green-400 mr-3 text-xl">✅</span><span class="flex-1">Есть осознанно, а не на эмоциях.</span></li>
+                <li class="flex items-start"><span class="text-green-400 mr-3 text-xl">✅</span><span class="flex-1">Двигаться по плану, даже когда не хочется.</span></li>
+                <li class="flex items-start"><span class="text-green-400 mr-3 text-xl">✅</span><span class="flex-1">Замечать свои срывы и возвращаться в строй, а не бросать всё.</span></li>
+                <li class="flex items-start"><span class="text-green-400 mr-3 text-xl">✅</span><span class="flex-1">Смотреть на себя в зеркало по-другому - с уважением, а не с критикой.</span></li>
+            </ul>
+            <p class="mt-4 font-semibold text-white text-lg">Ты построил фундамент. Это твой актив. Твоя победа.</p>
+        </div>
+
+        <!-- Секция 3: Новый вызов -->
+        <div class="bg-red-900/20 border border-red-500/30 rounded-2xl p-6 mb-12 fade-in-item" style="animation-delay: 200ms;">
+            <h3 class="font-bold text-2xl text-red-400 mb-3 flex items-center"><span class="text-3xl mr-3">⚠️</span> НО СЕЙЧАС НАЧИНАЕТСЯ САМОЕ СЛОЖНОЕ</h3>
+            <p class="text-gray-300">Настоящая проверка начинается, когда заканчивается структура. Нет еженедельных отчётов. Нет внешнего контроля. Нет ежедневных напоминаний.</p>
+            <p class="mt-3 text-gray-300">Ты остаёшься один на один с собой, и старые привычки будут пытаться вернуть тебя в болото. Без поддержки и понятного плана действий риск отката максимален.</p>
+            <p class="mt-4 font-semibold text-white">Именно поэтому я предлагаю тебе не бросать себя, а перейти в следующий, осознанный этап.</p>
+        </div>
+
+        <!-- Секция 4: Варианты -->
+        <div id="options" class="fade-in-item" style="animation-delay: 300ms;">
+            <h2 class="text-3xl font-bold text-center text-white mb-8">ТВОЙ ПЛАН ДАЛЬНЕЙШИХ ДЕЙСТВИЙ</h2>
+            <p class="text-center text-gray-400 mb-8">Выбери формат, который подходит именно тебе</p>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Формат 1 -->
+                <div class="bg-gray-800 rounded-2xl p-6 interactive-card relative overflow-hidden border-2 border-teal-500">
+                    <div class="absolute top-0 right-0 bg-teal-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">Популярное</div>
+                    <h4 class="font-bold text-xl text-white mb-2">ФОРМАТ 1: ИНДИВИДУАЛЬНОЕ ВЕДЕНИЕ 2.0</h4>
+                    <p class="text-sm text-teal-400 font-semibold mb-4">Для тех, кто хочет продолжать прогресс, углубляться и строить новое тело.</p>
+                    <p class="font-semibold text-white mb-2">Что входит:</p>
+                    <ul class="list-disc list-inside text-gray-400 text-sm space-y-1 mb-4">
+                        <li>Полное сопровождение по питанию и тренировкам (еженедельно).</li>
+                        <li>Регулярные корректировки и прямая связь со мной.</li>
+                        <li>Поддержка в Telegram + мини-созвоны по запросу.</li>
+                        <li>Работа с темами: закрепление веса, набор массы, гормоны, восстановление.</li>
+                    </ul>
+                    <p class="text-sm text-gray-400 mb-1"><span class="font-semibold text-white">Формат:</span> от 4 недель</p>
+                    <p class="text-sm text-gray-400 mb-4"><span class="font-semibold text-white">Стоимость:</span> обсуждается индивидуально</p>
+                    <a href="https://t.me/dgmukhin_adm?text=Хочу продолжить" target="_blank" class="block w-full text-center bg-teal-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-teal-700 transition-colors shimmer-btn">ОБСУДИТЬ ДЕТАЛИ</a>
+                </div>
+                <!-- Формат 2 -->
+                <div class="bg-gray-800 rounded-2xl p-6 interactive-card">
+                    <h4 class="font-bold text-xl text-white mb-2">ФОРМАТ 2: ФАЗА СТАБИЛИЗАЦИИ</h4>
+                    <p class="text-sm text-gray-400 font-semibold mb-4">Для тех, кто хочет закрепить полученный результат и остаться в тонусе.</p>
+                    <p class="font-semibold text-white mb-2">Что входит:</p>
+                    <ul class="list-disc list-inside text-gray-400 text-sm space-y-1 mb-4">
+                        <li>1 чек-ин и разбор недели.</li>
+                        <li>Поддержка в Telegram.</li>
+                        <li>Контроль питания и тренировок без глубокого анализа.</li>
+                        <li>Постепенный перевод на "автономное управление".</li>
+                    </ul>
+                    <p class="text-sm text-gray-400 mb-1"><span class="font-semibold text-white">Формат:</span> 4-8 недель</p>
+                    <p class="text-sm text-gray-400 mb-4"><span class="font-semibold text-white">Стоимость:</span> ниже полной программы</p>
+                    <a href="https://t.me/dgmukhin_adm?text=Хочу продолжить" target="_blank" class="block w-full text-center bg-gray-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-600 transition-colors shimmer-btn">УЗНАТЬ ПОДРОБНЕЕ</a>
+                </div>
+                <!-- Формат 3 -->
+                <div class="bg-gray-800 rounded-2xl p-6 interactive-card">
+                    <h4 class="font-bold text-xl text-white mb-2">ФОРМАТ 3: САМОСТОЯТЕЛЬНОЕ ДВИЖЕНИЕ</h4>
+                    <p class="text-sm text-gray-400 font-semibold mb-4">Для тех, кто готов идти сам, но хочет иметь возможность для контроля.</p>
+                    <p class="font-semibold text-white mb-2">Что входит:</p>
+                    <ul class="list-disc list-inside text-gray-400 text-sm space-y-1 mb-4">
+                        <li>Разовые консультации по запросу.</li>
+                        <li>Корректировка плана питания или тренировок.</li>
+                        <li>Переоценка прогресса и постановка новых целей.</li>
+                        <li>Ответы на точечные вопросы.</li>
+                    </ul>
+                    <p class="text-sm text-gray-400 mb-1"><span class="font-semibold text-white">Формат:</span> по запросу</p>
+                    <p class="text-sm text-gray-400 mb-4"><span class="font-semibold text-white">Стоимость:</span> разовая оплата</p>
+                    <a href="https://t.me/dgmukhin_adm?text=Хочу продолжить" target="_blank" class="block w-full text-center bg-gray-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-600 transition-colors shimmer-btn">ОСТАВИТЬ ЗАЯВКУ</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Секция 5: Как начать -->
+        <div class="bg-gray-800 rounded-2xl p-6 mt-12 fade-in-item" style="animation-delay: 500ms;">
+            <h3 class="font-bold text-2xl text-white mb-4">КАК ПРОДОЛЖИТЬ РАБОТУ СО МНОЙ?</h3>
+            <ol class="list-decimal list-inside text-gray-300 space-y-2">
+                <li>Заполни финальный отчёт и анкету, которые я прислал.</li>
+                <li>Напиши мне в личные сообщения, какой из трёх форматов тебе откликается больше всего.</li>
+                <li>Я вышлю тебе все условия, даты и детали, и мы начнём твой следующий этап.</li>
+            </ol>
+        </div>
+
+        <!-- Финальный блок -->
+        <div class="text-center py-12 fade-in-item" style="animation-delay: 600ms;">
+            <p class="text-2xl font-bold text-white italic">"Ты уже начал строить нового себя. Главное сейчас - не отпустить штурвал."</p>
+            <p class="mt-4 text-xl text-gray-400">Твой результат, твой ритм и твоя сила - это твой капитал. Моя задача - помочь тебе сохранить и приумножить его. Если ты готов работать дальше - я с тобой.</p>
+        </div>
+
+        <!-- Подвал -->
+        <footer class="text-center mt-12 border-t border-gray-700 pt-6">
+            <p class="text-sm text-gray-500">С уважением, Дмитрий | Программа "Body Balance"</p>
+        </footer>
+
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('main-container');
+
+            if ('ResizeObserver' in window) {
+                const observer = new ResizeObserver(entries => {
+                    if (entries.length > 0) {
+                        const height = entries[0].target.scrollHeight;
+                        document.body.style.height = height + 'px';
+                        document.documentElement.style.height = height + 'px';
+                    }
+                });
+                if (container) {
+                    observer.observe(container);
+                }
+            } else {
+                const resizeFallback = () => {
+                    if(container) document.body.style.height = container.scrollHeight + 'px';
+                };
+                setInterval(resizeFallback, 300);
+                window.addEventListener('resize', resizeFallback);
+                resizeFallback();
+            }
+        });
+    </script>
+</body>
+</html>
