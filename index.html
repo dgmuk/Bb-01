@@ -13,7 +13,7 @@
             font-family: 'Inter', sans-serif;
         }
         
-        /* Исправление для Google Sites (оставлено для универсальности) */
+        /* Исправление для Google Sites */
         html, body {
             height: auto !important;
             min-height: 1px !important;
@@ -73,8 +73,7 @@
 </head>
 <body class="bg-gray-900 text-gray-200">
 
-    <!-- ИЗМЕНЕНО: max-w-4xl заменен на max-w-7xl для более широкого макета на десктопе -->
-    <div id="main-container" class="container mx-auto max-w-7xl p-4 sm:p-8">
+    <div id="main-container" class="container mx-auto max-w-4xl p-4 sm:p-8">
         
         <!-- HERO SECTION -->
         <header class="text-center my-12 sm:my-20 fade-in-item">
@@ -208,10 +207,7 @@
                 window.addEventListener('resize', resizeFallback);
                 resizeFallback();
             }
-    </script>
-</body>
-</html>
-
+        });
     </script>
 </body>
 </html>
