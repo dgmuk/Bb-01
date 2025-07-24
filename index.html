@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Программа закончена. Твоя трансформация - нет.</title>
+    <title>Опросник по питанию</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,41 +33,47 @@
             }
         }
 
-        /* Интерактивное свечение карточек */
-        .interactive-card {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        /* Стилизация инпутов, селектов, текстовых полей */
+        .form-input, .form-select, .form-textarea {
+            background-color: #374151; border: 1px solid #4b5563;
+            border-radius: 0.5rem; padding: 0.75rem 1rem; width: 100%;
+            color: #d1d5db; transition: all 0.2s;
         }
-        .interactive-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 30px rgba(45, 212, 191, 0.2);
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none; border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
+        }
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
         }
         
-        /* АНИМАЦИЯ МЕРЦАНИЯ ДЛЯ КНОПОК */
-        .shimmer-btn {
-            position: relative;
-            overflow: hidden;
+        /* Стилизация слайдера */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 8px;
+            background: #4b5563;
+            border-radius: 5px;
+            outline: none;
         }
-        .shimmer-btn::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(100deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
-            transform: translateX(-150%);
-            animation: shimmer 3s infinite;
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            background: #3b82f6;
+            cursor: pointer;
+            border-radius: 50%;
         }
-        @keyframes shimmer {
-            0% {
-                transform: translateX(-150%);
-            }
-            50% {
-                transform: translateX(250%);
-            }
-            100% {
-                transform: translateX(250%);
-            }
+        input[type="range"]::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            background: #3b82f6;
+            cursor: pointer;
+            border-radius: 50%;
+            border: none;
         }
     </style>
 </head>
@@ -75,119 +81,179 @@
 
     <div id="main-container" class="container mx-auto max-w-4xl p-4 sm:p-8">
         
-        <!-- HERO SECTION -->
-        <header class="text-center my-12 sm:my-20 fade-in-item">
-            <h1 class="text-3xl sm:text-5xl font-black text-white leading-tight tracking-tight">
-                ПРОГРАММА ЗАКОНЧЕНА. <br class="hidden sm:block"> ТВОЯ ТРАНСФОРМАЦИЯ - ТОЛЬКО НАЧИНАЕТСЯ.
+        <!-- Заголовок -->
+        <header class="text-center mb-10 fade-in-item">
+            <h1 class="text-3xl sm:text-4xl font-black text-white leading-tight">
+                Опросник по питанию
             </h1>
-            <p class="mt-4 text-xl text-gray-400 max-w-3xl mx-auto">Ты прошел 8 недель и доказал, что можешь. Теперь главный вопрос: как не слить результат и сделать его частью своей жизни навсегда?</p>
-            <a href="https://t.me/dgmukhin_adm?text=Хочу продолжить" target="_blank" class="inline-block mt-8 bg-teal-600 text-white font-bold py-4 px-10 rounded-lg hover:bg-teal-700 transition-colors shadow-lg text-lg shimmer-btn">
-                ВЫБРАТЬ СЛЕДУЮЩИЙ УРОВЕНЬ
-            </a>
         </header>
         
-        <!-- Секция 2: Достижения -->
-        <div class="bg-gray-800 rounded-2xl p-6 mb-12 fade-in-item" style="animation-delay: 100ms;">
-            <h3 class="font-bold text-2xl text-white mb-4">✅ ТЫ УЖЕ НЕ ТОТ, КЕМ БЫЛ 8 НЕДЕЛЬ НАЗАД</h3>
-            <p class="text-gray-300 mb-4">Давай без лишних слов. За эти 8 недель ты научился:</p>
-            <ul class="space-y-3">
-                <li class="flex items-start"><span class="text-green-400 mr-3 text-xl">✅</span><span class="flex-1">Есть осознанно, а не на эмоциях.</span></li>
-                <li class="flex items-start"><span class="text-green-400 mr-3 text-xl">✅</span><span class="flex-1">Двигаться по плану, даже когда не хочется.</span></li>
-                <li class="flex items-start"><span class="text-green-400 mr-3 text-xl">✅</span><span class="flex-1">Замечать свои срывы и возвращаться в строй, а не бросать всё.</span></li>
-                <li class="flex items-start"><span class="text-green-400 mr-3 text-xl">✅</span><span class="flex-1">Смотреть на себя в зеркало по-другому - с уважением, а не с критикой.</span></li>
-            </ul>
-            <p class="mt-4 font-semibold text-white text-lg">Ты построил фундамент. Это твой актив. Твоя победа.</p>
+        <!-- Вступительный блок -->
+        <div class="bg-gray-800 rounded-2xl p-6 mb-10 fade-in-item text-gray-400 space-y-3" style="animation-delay: 100ms;">
+            <p>Уважаемый Клиент! Этот опросник поможет мне, вашему эксперту по питанию, составить наиболее эффективную и комфортную стратегию питания, которая будет учитывать ваши индивидуальные цели, предпочтения и образ жизни.</p>
+            <p class="font-semibold text-gray-300">Пожалуйста, ответьте на все вопросы максимально честно и подробно. Вся предоставленная информация конфиденциальна.</p>
         </div>
 
-        <!-- Секция 3: Новый вызов -->
-        <div class="bg-red-900/20 border border-red-500/30 rounded-2xl p-6 mb-12 fade-in-item" style="animation-delay: 200ms;">
-            <h3 class="font-bold text-2xl text-red-400 mb-3 flex items-center"><span class="text-3xl mr-3">⚠️</span> НО СЕЙЧАС НАЧИНАЕТСЯ САМОЕ СЛОЖНОЕ</h3>
-            <p class="text-gray-300">Настоящая проверка начинается, когда заканчивается структура. Нет еженедельных отчётов. Нет внешнего контроля. Нет ежедневных напоминаний.</p>
-            <p class="mt-3 text-gray-300">Ты остаёшься один на один с собой, и старые привычки будут пытаться вернуть тебя в болото. Без поддержки и понятного плана действий риск отката максимален.</p>
-            <p class="mt-4 font-semibold text-white">Именно поэтому я предлагаю тебе не бросать себя, а перейти в следующий, осознанный этап.</p>
-        </div>
+        <!-- Форма с вопросами -->
+        <form id="nutritionForm" class="space-y-8">
+            <!-- Блок 1 -->
+            <div class="bg-gray-800 rounded-2xl shadow-lg p-6 fade-in-item" style="animation-delay: 200ms;">
+                <h2 class="text-2xl font-bold text-white mb-6 border-b-2 border-green-500 pb-3">Блок 1: Общая информация и Цели</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div><label for="date" class="block text-sm font-medium text-gray-300 mb-2">1. Дата заполнения:</label><input type="date" id="date" class="form-input"></div>
+                    <div><label for="name" class="block text-sm font-medium text-gray-300 mb-2">2. Имя и Фамилия:</label><input type="text" id="name" class="form-input" placeholder="Введите имя и фамилию"></div>
+                    <div><label for="age" class="block text-sm font-medium text-gray-300 mb-2">3. Возраст:</label><input type="number" id="age" class="form-input" placeholder="Возраст"></div>
+                    <div><label for="gender" class="block text-sm font-medium text-gray-300 mb-2">4. Пол:</label><select id="gender" class="form-select"><option value="">Выберите пол</option><option value="Мужской">Мужской</option><option value="Женский">Женский</option></select></div>
+                    <div><label for="height" class="block text-sm font-medium text-gray-300 mb-2">5. Рост (см):</label><input type="number" id="height" class="form-input" placeholder="Рост в см"></div>
+                    <div><label for="weight" class="block text-sm font-medium text-gray-300 mb-2">6. Текущий вес (кг):</label><input type="number" id="weight" class="form-input" placeholder="Вес в кг"></div>
+                </div>
+                <div class="mt-6"><label for="goal" class="block text-sm font-medium text-gray-300 mb-2">7. Ваша основная цель в работе со мной:</label><select id="goal" class="form-select"><option value="">Выберите цель</option><option value="Похудение">Похудение</option><option value="Набор веса">Набор веса</option><option value="Поддержание веса">Поддержание веса</option><option value="Улучшение здоровья">Улучшение здоровья</option><option value="Увеличение энергии">Увеличение энергии</option></select></div>
+                <div class="mt-6"><label for="goalNumber" class="block text-sm font-medium text-gray-300 mb-2">Напишите цифру, соответствующую вашей цели:</label><input type="text" id="goalNumber" class="form-input" placeholder="Например, похудеть на 7 кг"></div>
+                <div class="mt-6"><label for="importance" class="block text-sm font-medium text-gray-300 mb-2">8. Насколько важна для вас эта цель по шкале от 1 до 10?</label><input type="range" id="importance" min="1" max="10" value="5"><div class="flex justify-between text-sm text-gray-500 mt-1"><span>1</span><span id="importanceValue">5</span><span>10</span></div></div>
+                <div class="mt-6"><label for="expectedChanges" class="block text-sm font-medium text-gray-300 mb-2">9. Какие изменения в своем теле и самочувствии вы ожидаете увидеть?</label><textarea id="expectedChanges" class="form-textarea" placeholder="Опишите ожидаемые изменения..."></textarea></div>
+            </div>
 
-        <!-- Секция 4: Варианты -->
-        <div id="options" class="fade-in-item" style="animation-delay: 300ms;">
-            <h2 class="text-3xl font-bold text-center text-white mb-8">ТВОЙ ПЛАН ДАЛЬНЕЙШИХ ДЕЙСТВИЙ</h2>
-            <p class="text-center text-gray-400 mb-8">Выбери формат, который подходит именно тебе</p>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- Формат 1 -->
-                <div class="bg-gray-800 rounded-2xl p-6 interactive-card relative overflow-hidden border-2 border-teal-500">
-                    <div class="absolute top-0 right-0 bg-teal-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">Популярное</div>
-                    <h4 class="font-bold text-xl text-white mb-2">ФОРМАТ 1: ИНДИВИДУАЛЬНОЕ ВЕДЕНИЕ 2.0</h4>
-                    <p class="text-sm text-teal-400 font-semibold mb-4">Для тех, кто хочет продолжать прогресс, углубляться и строить новое тело.</p>
-                    <p class="font-semibold text-white mb-2">Что входит:</p>
-                    <ul class="list-disc list-inside text-gray-400 text-sm space-y-1 mb-4">
-                        <li>Полное сопровождение по питанию и тренировкам (еженедельно).</li>
-                        <li>Регулярные корректировки и прямая связь со мной.</li>
-                        <li>Поддержка в Telegram + мини-созвоны по запросу.</li>
-                        <li>Работа с темами: закрепление веса, набор массы, гормоны, восстановление.</li>
-                    </ul>
-                    <p class="text-sm text-gray-400 mb-1"><span class="font-semibold text-white">Формат:</span> от 4 недель</p>
-                    <p class="text-sm text-gray-400 mb-4"><span class="font-semibold text-white">Стоимость:</span> обсуждается индивидуально</p>
-                    <a href="https://t.me/dgmukhin_adm?text=Хочу продолжить" target="_blank" class="block w-full text-center bg-teal-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-teal-700 transition-colors shimmer-btn">ОБСУДИТЬ ДЕТАЛИ</a>
-                </div>
-                <!-- Формат 2 -->
-                <div class="bg-gray-800 rounded-2xl p-6 interactive-card">
-                    <h4 class="font-bold text-xl text-white mb-2">ФОРМАТ 2: ФАЗА СТАБИЛИЗАЦИИ</h4>
-                    <p class="text-sm text-gray-400 font-semibold mb-4">Для тех, кто хочет закрепить полученный результат и остаться в тонусе.</p>
-                    <p class="font-semibold text-white mb-2">Что входит:</p>
-                    <ul class="list-disc list-inside text-gray-400 text-sm space-y-1 mb-4">
-                        <li>1 чек-ин и разбор недели.</li>
-                        <li>Поддержка в Telegram.</li>
-                        <li>Контроль питания и тренировок без глубокого анализа.</li>
-                        <li>Постепенный перевод на "автономное управление".</li>
-                    </ul>
-                    <p class="text-sm text-gray-400 mb-1"><span class="font-semibold text-white">Формат:</span> 4-8 недель</p>
-                    <p class="text-sm text-gray-400 mb-4"><span class="font-semibold text-white">Стоимость:</span> ниже полной программы</p>
-                    <a href="https://t.me/dgmukhin_adm?text=Хочу продолжить" target="_blank" class="block w-full text-center bg-gray-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-600 transition-colors shimmer-btn">УЗНАТЬ ПОДРОБНЕЕ</a>
-                </div>
-                <!-- Формат 3 -->
-                <div class="bg-gray-800 rounded-2xl p-6 interactive-card">
-                    <h4 class="font-bold text-xl text-white mb-2">ФОРМАТ 3: САМОСТОЯТЕЛЬНОЕ ДВИЖЕНИЕ</h4>
-                    <p class="text-sm text-gray-400 font-semibold mb-4">Для тех, кто готов идти сам, но хочет иметь возможность для контроля.</p>
-                    <p class="font-semibold text-white mb-2">Что входит:</p>
-                    <ul class="list-disc list-inside text-gray-400 text-sm space-y-1 mb-4">
-                        <li>Разовые консультации по запросу.</li>
-                        <li>Корректировка плана питания или тренировок.</li>
-                        <li>Переоценка прогресса и постановка новых целей.</li>
-                        <li>Ответы на точечные вопросы.</li>
-                    </ul>
-                    <p class="text-sm text-gray-400 mb-1"><span class="font-semibold text-white">Формат:</span> по запросу</p>
-                    <p class="text-sm text-gray-400 mb-4"><span class="font-semibold text-white">Стоимость:</span> разовая оплата</p>
-                    <a href="https://t.me/dgmukhin_adm?text=Хочу продолжить" target="_blank" class="block w-full text-center bg-gray-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-600 transition-colors shimmer-btn">ОСТАВИТЬ ЗАЯВКУ</a>
+            <!-- Блок 2 -->
+            <div class="bg-gray-800 rounded-2xl shadow-lg p-6 fade-in-item" style="animation-delay: 300ms;">
+                <h2 class="text-2xl font-bold text-white mb-6 border-b-2 border-blue-500 pb-3">Блок 2: Состояние Здоровья и Ограничения</h2>
+                <div class="space-y-6">
+                    <div><label for="chronicDiseases" class="block text-sm font-medium text-gray-300 mb-2">10. Есть ли у вас хронические заболевания или диагнозы?</label><textarea id="chronicDiseases" class="form-textarea" placeholder="Диабет, заболевания щитовидной железы и т.д."></textarea></div>
+                    <div><label for="medications" class="block text-sm font-medium text-gray-300 mb-2">11. Принимаете ли вы лекарства на постоянной основе?</label><textarea id="medications" class="form-textarea" placeholder="Перечислите принимаемые лекарства..."></textarea></div>
+                    <div><label for="allergies" class="block text-sm font-medium text-gray-300 mb-2">12. Есть ли у вас пищевые аллергии или непереносимости?</label><textarea id="allergies" class="form-textarea" placeholder="Лактоза, глютен, орехи и т.д."></textarea></div>
+                    <div><label for="dietaryRestrictions" class="block text-sm font-medium text-gray-300 mb-2">13. Есть ли продукты, которые вы не едите по этическим или религиозным соображениям?</label><textarea id="dietaryRestrictions" class="form-textarea" placeholder="Вегетарианство, веганство и т.д."></textarea></div>
+                    <div><label for="eatingDisorders" class="block text-sm font-medium text-gray-300 mb-2">14. Были ли у вас ранее расстройства пищевого поведения?</label><textarea id="eatingDisorders" class="form-textarea" placeholder="Анорексия, булимия, компульсивное переедание..."></textarea></div>
                 </div>
             </div>
-        </div>
 
-        <!-- Секция 5: Как начать -->
-        <div class="bg-gray-800 rounded-2xl p-6 mt-12 fade-in-item" style="animation-delay: 500ms;">
-            <h3 class="font-bold text-2xl text-white mb-4">КАК ПРОДОЛЖИТЬ РАБОТУ СО МНОЙ?</h3>
-            <ol class="list-decimal list-inside text-gray-300 space-y-2">
-                <li>Заполни финальный отчёт и анкету, которые я прислал.</li>
-                <li>Напиши мне в личные сообщения, какой из трёх форматов тебе откликается больше всего.</li>
-                <li>Я вышлю тебе все условия, даты и детали, и мы начнём твой следующий этап.</li>
-            </ol>
-        </div>
+            <!-- Блок 3 -->
+            <div class="bg-gray-800 rounded-2xl shadow-lg p-6 fade-in-item" style="animation-delay: 400ms;">
+                <h2 class="text-2xl font-bold text-white mb-6 border-b-2 border-orange-500 pb-3">Блок 3: Пищевые Привычки и Предпочтения</h2>
+                <div class="space-y-6">
+                    <div><label for="lovedFoods" class="block text-sm font-medium text-gray-300 mb-2">16. Какие продукты вы ОЧЕНЬ любите и хотели бы включить в рацион?</label><textarea id="lovedFoods" class="form-textarea" placeholder="Перечислите любимые продукты..."></textarea></div>
+                    <div><label for="dislikedFoods" class="block text-sm font-medium text-gray-300 mb-2">17. Какие продукты вы СОВСЕМ не любите и хотели бы исключить?</label><textarea id="dislikedFoods" class="form-textarea" placeholder="Перечислите нелюбимые продукты..."></textarea></div>
+                    <div><label for="eatingOut" class="block text-sm font-medium text-gray-300 mb-2">18. Насколько часто вы едите вне дома?</label><select id="eatingOut" class="form-select"><option value="">Выберите частоту</option><option value="Очень редко / Никогда">Очень редко / Никогда</option><option value="1-2 раза в месяц">1-2 раза в месяц</option><option value="1-2 раза в неделю">1-2 раза в неделю</option><option value="3-4 раза в неделю">3-4 раза в неделю</option><option value="Ежедневно">Ежедневно</option></select></div>
+                    <div><label for="cookingAttitude" class="block text-sm font-medium text-gray-300 mb-2">19. Как вы относитесь к готовке?</label><select id="cookingAttitude" class="form-select"><option value="">Выберите отношение</option><option value="Люблю готовить, готов тратить время">Люблю готовить, готов тратить время</option><option value="Готовлю при необходимости">Готовлю при необходимости</option><option value="Не люблю готовить, нужны простые решения">Не люблю готовить, нужны простые решения</option></select></div>
+                    <div><label for="planFlexibility" class="block text-sm font-medium text-gray-300 mb-2">22. Насколько гибким должен быть ваш план питания?</label><select id="planFlexibility" class="form-select"><option value="">Выберите тип плана</option><option value="Четкий план с конкретными блюдами и порциями">Четкий план с конкретными блюдами и порциями</option><option value="Нужен шаблон и список продуктов, но с возможностью выбора">Нужен шаблон и список продуктов, но с возможностью выбора</option><option value="Общие рекомендации, буду составлять сам">Общие рекомендации, буду составлять сам</option></select></div>
+                    <div><label for="tracking" class="block text-sm font-medium text-gray-300 mb-2">23. Насколько вы готовы отслеживать свой рацион?</label><select id="tracking" class="form-select"><option value="">Выберите подход</option><option value="Готов считать калории и взвешивать продукты">Готов считать калории и взвешивать продукты</option><option value="Готов использовать приложения для подсчета">Готов использовать приложения для подсчета</option><option value="Не хочу считать калории, предпочитаю ориентироваться на размер порций">Не хочу считать калории, предпочитаю ориентироваться на размер порций</option></select></div>
+                    <div><label for="budget" class="block text-sm font-medium text-gray-300 mb-2">24. Каков ваш примерный бюджет на продукты в месяц?</label><select id="budget" class="form-select"><option value="">Выберите бюджет</option><option value="Низкий">Низкий</option><option value="Средний">Средний</option><option value="Высокий">Высокий</option><option value="Без ограничений">Без ограничений</option></select></div>
+                    <div><label for="otherFactors" class="block text-sm font-medium text-gray-300 mb-2">25. Есть ли другие важные факторы, касающиеся питания?</label><textarea id="otherFactors" class="form-textarea" placeholder="Дополнительная информация..."></textarea></div>
+                </div>
+            </div>
 
-        <!-- Финальный блок -->
-        <div class="text-center py-12 fade-in-item" style="animation-delay: 600ms;">
-            <p class="text-2xl font-bold text-white italic">"Ты уже начал строить нового себя. Главное сейчас - не отпустить штурвал."</p>
-            <p class="mt-4 text-xl text-gray-400">Твой результат, твой ритм и твоя сила - это твой капитал. Моя задача - помочь тебе сохранить и приумножить его. Если ты готов работать дальше - я с тобой.</p>
+            <!-- Блок 4 -->
+            <div class="bg-gray-800 rounded-2xl shadow-lg p-6 fade-in-item" style="animation-delay: 500ms;">
+                <h2 class="text-2xl font-bold text-white mb-6 border-b-2 border-violet-500 pb-3">Блок 4: Образ Жизни и Физическая Активность</h2>
+                <div class="space-y-6">
+                    <div><label for="workSchedule" class="block text-sm font-medium text-gray-300 mb-2">26. Опишите ваш типичный рабочий график и уровень стресса:</label><select id="workSchedule" class="form-select"><option value="">Выберите описание</option><option value="Сидячая работа, высокий уровень стресса">Сидячая работа, высокий уровень стресса</option><option value="Сидячая работа, низкий/средний уровень стресса">Сидячая работа, низкий/средний уровень стресса</option><option value="Активная работа (на ногах), низкий/средний уровень стресса">Активная работа (на ногах), низкий/средний уровень стресса</option><option value="Активная работа, высокий уровень стресса">Активная работа, высокий уровень стресса</option><option value="Физическая работа">Физическая работа</option></select></div>
+                    <div><label for="sleepQuality" class="block text-sm font-medium text-gray-300 mb-2">27. Как бы вы оценили качество своего сна?</label><select id="sleepQuality" class="form-select"><option value="">Выберите качество сна</option><option value="Отличное (сплю 7-9 часов, легко засыпаю)">Отличное (сплю 7-9 часов, легко засыпаю)</option><option value="Удовлетворительное (сплю меньше 7 часов, проблемы с засыпанием)">Удовлетворительное (сплю меньше 7 часов, проблемы с засыпанием)</option><option value="Плохое (постоянные проблемы со сном)">Плохое (постоянные проблемы со сном)</option></select></div>
+                    <div><label for="physicalActivity" class="block text-sm font-medium text-gray-300 mb-2">28. Какова ваша текущая физическая активность?</label><textarea id="physicalActivity" class="form-textarea" placeholder="Много хожу пешком, использую лестницу..."></textarea></div>
+                    <div><label for="badHabits" class="block text-sm font-medium text-gray-300 mb-2">30. Есть ли у вас привычки, которые могут мешать достижению цели?</label><textarea id="badHabits" class="form-textarea" placeholder="Частые перекусы перед телевизором, поздние ужины..."></textarea></div>
+                    <div><label for="lifestyleChanges" class="block text-sm font-medium text-gray-300 mb-2">31. Насколько вы готовы к изменениям в образе жизни?</label><textarea id="lifestyleChanges" class="form-textarea" placeholder="Увеличение бытовой активности, улучшение сна..."></textarea></div>
+                </div>
+            </div>
+
+            <!-- Блок 5 -->
+            <div class="bg-gray-800 rounded-2xl shadow-lg p-6 fade-in-item" style="animation-delay: 600ms;">
+                <h2 class="text-2xl font-bold text-white mb-6 border-b-2 border-pink-500 pb-3">Блок 5: Дополнительная информация</h2>
+                <div class="space-y-6">
+                    <div><label for="biggestChallenge" class="block text-sm font-medium text-gray-300 mb-2">32. Что для вас является наибольшим вызовом в изменении пищевых привычек?</label><textarea id="biggestChallenge" class="form-textarea" placeholder="Отсутствие времени, сила воли, любовь к сладкому..."></textarea></div>
+                    <div><label for="motivation" class="block text-sm font-medium text-gray-300 mb-2">33. Что или кто мотивирует вас на изменения?</label><textarea id="motivation" class="form-textarea" placeholder="Опишите вашу мотивацию..."></textarea></div>
+                    <div><label for="additionalInfo" class="block text-sm font-medium text-gray-300 mb-2">34. Есть ли еще какая-либо важная информация?</label><textarea id="additionalInfo" class="form-textarea" placeholder="Любая дополнительная информация..."></textarea></div>
+                </div>
+            </div>
+        </form>
+
+        <!-- Кнопка -->
+        <div class="mt-10 text-center fade-in-item" style="animation-delay: 700ms;">
+            <button id="copy-btn" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition-colors shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-500/50 shimmer-btn">
+                Скопировать ответы для тренера
+            </button>
         </div>
 
         <!-- Подвал -->
         <footer class="text-center mt-12 border-t border-gray-700 pt-6">
-            <p class="text-sm text-gray-500">С уважением, Дмитрий | Программа "Body Balance"</p>
+            <p class="text-sm text-gray-500">&copy; 2025 г. Все права защищены. Специально для проекта Body balance.</p>
         </footer>
-
     </div>
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('main-container');
+            const copyButton = document.getElementById('copy-btn');
+            const form = document.getElementById('nutritionForm');
+            const allInputs = form.querySelectorAll('input, select, textarea');
+            const STORAGE_KEY = 'nutritionQuestionnaireState';
 
+            // --- Сохранение и загрузка ---
+            function saveState() {
+                const state = {};
+                allInputs.forEach(input => {
+                    if (input.type === 'range') {
+                        state[input.id] = input.value;
+                        document.getElementById('importanceValue').textContent = input.value;
+                    } else {
+                        state[input.id] = input.value;
+                    }
+                });
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+            }
+
+            function loadState() {
+                const savedState = localStorage.getItem(STORAGE_KEY);
+                if (savedState) {
+                    const state = JSON.parse(savedState);
+                    allInputs.forEach(input => {
+                        if (state[input.id] !== undefined) {
+                            input.value = state[input.id];
+                            if (input.id === 'importance') {
+                                document.getElementById('importanceValue').textContent = input.value;
+                            }
+                        }
+                    });
+                }
+            }
+
+            allInputs.forEach(input => {
+                input.addEventListener('input', saveState);
+            });
+
+            // --- Копирование ---
+            copyButton.addEventListener('click', () => {
+                let reportText = "📝 Опросник по питанию\n\n";
+                const labels = {
+                    date: "1. Дата заполнения", name: "2. Имя и Фамилия", age: "3. Возраст", gender: "4. Пол", height: "5. Рост (см)", weight: "6. Текущий вес (кг)", goal: "7. Основная цель", goalNumber: "Конкретная цель в цифрах", importance: "8. Важность цели (1-10)", expectedChanges: "9. Ожидаемые изменения",
+                    chronicDiseases: "10. Хронические заболевания", medications: "11. Принимаемые лекарства", allergies: "12. Пищевые аллергии", dietaryRestrictions: "13. Диетические ограничения", eatingDisorders: "14. Расстройства пищевого поведения",
+                    lovedFoods: "16. Любимые продукты", dislikedFoods: "17. Нелюбимые продукты", eatingOut: "18. Частота питания вне дома", cookingAttitude: "19. Отношение к готовке", planFlexibility: "22. Гибкость плана", tracking: "23. Готовность к отслеживанию", budget: "24. Бюджет на продукты", otherFactors: "25. Другие факторы",
+                    workSchedule: "26. Рабочий график и стресс", sleepQuality: "27. Качество сна", physicalActivity: "28. Физическая активность", badHabits: "30. Вредные привычки", lifestyleChanges: "31. Готовность к изменениям",
+                    biggestChallenge: "32. Наибольший вызов", motivation: "33. Мотивация", additionalInfo: "34. Доп. информация"
+                };
+                
+                for (const id in labels) {
+                    const el = document.getElementById(id);
+                    if (el && el.value) {
+                        reportText += `${labels[id]}: ${el.value}\n`;
+                    }
+                }
+
+                const tempTextarea = document.createElement('textarea');
+                tempTextarea.value = reportText;
+                document.body.appendChild(tempTextarea);
+                tempTextarea.select();
+                try {
+                    document.execCommand('copy');
+                    copyButton.textContent = '✅ Скопировано!';
+                } catch (err) {
+                    copyButton.textContent = 'Ошибка!';
+                    console.error('Ошибка копирования: ', err);
+                }
+                document.body.removeChild(tempTextarea);
+
+                setTimeout(() => {
+                    copyButton.textContent = 'Скопировать ответы для тренера';
+                }, 2500);
+            });
+
+            // --- Исправление высоты для Google Sites ---
             if ('ResizeObserver' in window) {
                 const observer = new ResizeObserver(entries => {
                     if (entries.length > 0) {
@@ -196,17 +262,12 @@
                         document.documentElement.style.height = height + 'px';
                     }
                 });
-                if (container) {
-                    observer.observe(container);
-                }
-            } else {
-                const resizeFallback = () => {
-                    if(container) document.body.style.height = container.scrollHeight + 'px';
-                };
-                setInterval(resizeFallback, 300);
-                window.addEventListener('resize', resizeFallback);
-                resizeFallback();
+                if (container) observer.observe(container);
             }
+
+            // Инициализация
+            document.getElementById('date').valueAsDate = new Date();
+            loadState();
         });
     </script>
 </body>
